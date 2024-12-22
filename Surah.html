@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surah List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f3f4f6;
+            color: #333;
+        }
+        .header {
+            background-color: #003366;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+        .container {
+            margin: 20px auto;
+            max-width: 600px;
+        }
+        .parah {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .parah li {
+            background: #ffffff;
+            margin: 10px 20px;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            transition: transform 0.2s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .parah li:hover {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+            transform: scale(1.02);
+        }
+        .parah li.selected {
+            background-color: #e6f7ff;
+            transform: scale(1.05);
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+        }
+        .english {
+            font-size: 16px;
+            text-align: left;
+            flex: 1;
+        }
+        .arabic {
+            font-size: 18px;
+            text-align: right;
+            color: #666;
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Surah List</h1>
+    </div>
+    <div class="container">
+        <ul class="parah" id="parahList">
+            <!-- Dynamic Surah list will be inserted here -->
+        </ul>
+    </div>
+
+    <script>
+        // Complete Surah list
+        const surahs = [
+            { english: "Al-Fatiha", arabic: "١. الفاتحة" },
+            { english: "Al-Baqarah", arabic: "٢. البقرة" },
+            { english: "Aal-E-Imran", arabic: "٣. آل عمران" },
+            { english: "An-Nisa", arabic: "٤. النساء" },
+            { english: "Al-Maidah", arabic: "٥. المائدة" },
+            { english: "Al-An'am", arabic: "٦. الأنعام" },
+            { english: "Al-A'raf", arabic: "٧. الأعراف" },
+            { english: "Al-Anfal", arabic: "٨. الأنفال" },
+            { english: "At-Tawbah", arabic: "٩. التوبة" },
+            { english: "Yunus", arabic: "١٠. يونس" },
+            { english: "Hud", arabic: "١١. هود" },
+            { english: "Yusuf", arabic: "١٢. يوسف" },
+            { english: "Ar-Ra'd", arabic: "١٣. الرعد" },
+            { english: "Ibrahim", arabic: "١٤. إبراهيم" },
+            { english: "Al-Hijr", arabic: "١٥. الحجر" },
+            { english: "An-Nahl", arabic: "١٦. النحل" },
+            { english: "Al-Isra", arabic: "١٧. الإسراء" },
+            { english: "Al-Kahf", arabic: "١٨. الكهف" },
+            { english: "Maryam", arabic: "١٩. مريم" },
+            { english: "Taha", arabic: "٢٠. طه" },
+            { english: "Al-Anbiya", arabic: "٢١. الأنبياء" },
+            { english: "Al-Hajj", arabic: "٢٢. الحج" },
+            { english: "Al-Mu'minun", arabic: "٢٣. المؤمنون" },
+            { english: "An-Nur", arabic: "٢٤. النور" },
+            { english: "Al-Furqan", arabic: "٢٥. الفرقان" },
+            { english: "Ash-Shu'ara", arabic: "٢٦. الشعراء" },
+            { english: "An-Naml", arabic: "٢٧. النمل" },
+            { english: "Al-Qasas", arabic: "٢٨. القصص" },
+            { english: "Al-Ankabut", arabic: "٢٩. العنكبوت" },
+            { english: "Ar-Rum", arabic: "٣٠. الروم" },
+            { english: "Luqman", arabic: "٣١. لقمان" },
+            { english: "As-Sajda", arabic: "٣٢. السجدة" },
+            { english: "Al-Ahzab", arabic: "٣٣. الأحزاب" },
+            { english: "Saba", arabic: "٣٤. سبأ" },
+            { english: "Fatir", arabic: "٣٥. فاطر" },
+            { english: "Ya-Sin", arabic: "٣٦. يس" },
+            { english: "As-Saffat", arabic: "٣٧. الصافات" },
+            { english: "Sad", arabic: "٣٨. ص" },
+            { english: "Az-Zumar", arabic: "٣٩. الزمر" },
+            { english: "Ghafir", arabic: "٤٠. غافر" },
+            { english: "Fussilat", arabic: "٤١. فصلت" },
+            { english: "Ash-Shura", arabic: "٤٢. الشورى" },
+            { english: "Az-Zukhruf", arabic: "٤٣. الزخرف" },
+            { english: "Ad-Dukhan", arabic: "٤٤. الدخان" },
+            { english: "Al-Jathiya", arabic: "٤٥. الجاثية" },
+            { english: "Al-Ahqaf", arabic: "٤٦. الأحقاف" },
+            { english: "Muhammad", arabic: "٤٧. محمد" },
+            { english: "Al-Fath", arabic: "٤٨. الفتح" },
+            { english: "Al-Hujurat", arabic: "٤٩. الحجرات" },
+            { english: "Qaf", arabic: "٥٠. ق" },
+            { english: "Adh-Dhariyat", arabic: "٥١. الذاريات" },
+            { english: "At-Tur", arabic: "٥٢. الطور" },
+            { english: "An-Najm", arabic: "٥٣. النجم" },
+            { english: "Al-Qamar", arabic: "٥٤. القمر" },
+            { english: "Ar-Rahman", arabic: "٥٥. الرحمن" },
+            { english: "Al-Waqia", arabic: "٥٦. الواقعة" },
+            { english: "Al-Hadid", arabic: "٥٧. الحديد" },
+            { english: "Al-Mujadila", arabic: "٥٨. المجادلة" },
+            { english: "Al-Hashr", arabic: "٥٩. الحشر" },
+            { english: "Al-Mumtahina", arabic: "٦٠. الممتحنة" },
+            { english: "As-Saff", arabic: "٦١. الصف" },
+            { english: "Al-Jumua", arabic: "٦٢. الجمعة" },
+            { english: "Al-Munafiqun", arabic: "٦٣. المنافقون" },
+            { english: "At-Taghabun", arabic: "٦٤. التغابن" },
+            { english: "At-Talaq", arabic: "٦٥. الطلاق" },
+            { english: "At-Tahrim", arabic: "٦٦. التحريم" },
+            { english: "Al-Mulk", arabic: "٦٧. الملك" },
+            { english: "Al-Qalam", arabic: "٦٨. القلم" },
+            { english: "Al-Haqqa", arabic: "٦٩. الحاقة" },
+            { english: "Al-Maarij", arabic: "٧٠. المعارج" },
+            { english: "Nuh", arabic: "٧١. نوح" },
+            { english: "Al-Jinn", arabic: "٧٢. الجن" },
+            { english: "Al-Muzzammil", arabic: "٧٣. المزمل" },
+            { english: "Al-Muddaththir", arabic: "٧٤. المدثر" },
+            { english: "Al-Qiyama", arabic: "٧٥. القيامة" },
+            { english: "Al-Insan", arabic: "٧٦. الإنسان" },
+            { english: "Al-Mursalat", arabic: "٧٧. المرسلات" },
+            { english: "An-Naba", arabic: "٧٨. النبأ" },
+            { english: "An-Naziat", arabic: "٧٩. النازعات" },
+            { english: "Abasa", arabic: "٨٠. عبس" },
+            { english: "At-Takwir", arabic: "٨١. التكوير" },
+            { english: "Al-Infitar", arabic: "٨٢. الانفطار" },
+            { english: "Al-Mutaffifin", arabic: "٨٣. المطففين" },
+            { english: "Al-Inshiqaq", arabic: "٨٤. الانشقاق" },
+            { english: "Al-Burooj", arabic: "٨٥. البروج" },
+            { english: "At-Tariq", arabic: "٨٦. الطارق" },
+            { english: "Al-Ala", arabic: "٨٧. الأعلى" },
+            { english: "Al-Ghashiya", arabic: "٨٨. الغاشية" },
+            { english: "Al-Fajr", arabic: "٨٩. الفجر" },
+            { english: "Al-Balad", arabic: "٩٠. البلد" },
+            { english: "Ash-Shams", arabic: "٩١. الشمس" },
+            { english: "Al-Lail", arabic: "٩٢. الليل" },
+            { english: "Ad-Duha", arabic: "٩٣. الضحى" },
+            { english: "Ash-Sharh", arabic: "٩٤. الشرح" },
+            { english: "At-Tin", arabic: "٩٥. التين" },
+            { english: "Al-Alaq", arabic: "٩٦. العلق" },
+            { english: "Al-Qadr", arabic: "٩٧. القدر" },
+            { english: "Al-Bayyina", arabic: "٩٨. البينة" },
+            { english: "Az-Zalzala", arabic: "٩٩. الزلزلة" },
+            { english: "Al-Adiyat", arabic: "١٠٠. العاديات" },
+            { english: "Al-Qaria", arabic: "١٠١. القارعة" },
+            { english: "At-Takathur", arabic: "١٠٢. التكاثر" },
+            { english: "Al-Asr", arabic: "١٠٣. العصر" },
+            { english: "Al-Humaza", arabic: "١٠٤. الهمزة" },
+            { english: "Al-Fil", arabic: "١٠٥. الفيل" },
+            { english: "Quraish", arabic: "١٠٦. قريش" },
+            { english: "Al-Ma'un", arabic: "١٠٧. الماعون" },
+            { english: "Al-Kawthar", arabic: "١٠٨. الكوثر" },
+            { english: "Al-Kafiroon", arabic: "١٠٩. الكافرون" },
+            { english: "An-Nasr", arabic: "١١٠. النصر" },
+            { english: "Al-Masad", arabic: "١١١. المسد" },
+            { english: "Al-Ikhlas", arabic: "١١٢. الإخلاص" },
+            { english: "Al-Falaq", arabic: "١١٣. الفلق" },
+            { english: "An-Nas", arabic: "١١٤. الناس" }
+        ];
+
+        // Render Surah list
+        const parahList = document.getElementById('parahList');
+        parahList.innerHTML = surahs.map((surah, index) => `
+            <li tabindex="0">
+                <span class="english">${index + 1}. ${surah.english}</span>
+                <span class="arabic">${surah.arabic}</span>
+            </li>
+        `).join('');
+
+        // Add click effect
+        parahList.addEventListener('click', function(e) {
+            if (e.target.tagName === 'LI' || e.target.closest('li')) {
+                const items = document.querySelectorAll('.parah li');
+                items.forEach(item => item.classList.remove('selected'));
+                const clickedItem = e.target.closest('li');
+                clickedItem.classList.add('selected');
+            }
+        });
+    </script>
+</body>
+</html>
