@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parah List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f3f4f6;
+            color: #333;
+        }
+        .header {
+            background-color: #003366;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+        .container {
+            margin: 20px auto;
+            max-width: 600px;
+        }
+        .parah {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .parah li {
+            background: #ffffff;
+            margin: 10px 20px;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            transition: transform 0.2s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .parah li:hover {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+            transform: scale(1.02);
+        }
+        .parah li:focus {
+            outline: none;
+            background-color: #ffffff;
+        }
+        .parah li.selected {
+            background-color: #e6f7ff;
+            transform: scale(1.05);
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+        }
+        .english {
+            font-size: 16px;
+            text-align: left;
+            flex: 1;
+        }
+        .arabic {
+            font-size: 18px;
+            text-align: right;
+            color: #666;
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Parah List</h1>
+    </div>
+    <div class="container">
+        <ul class="parah" id="parahList">
+            <li tabindex="0"><span class="english">1. Al-Fatiha - Parah 1</span><span class="arabic">١. الفاتحة - الجزء الأول</span></li>
+            <li tabindex="0"><span class="english">2. Al-Baqarah - Parah 2</span><span class="arabic">٢. البقرة - الجزء الثاني</span></li>
+            <li tabindex="0"><span class="english">3. Aal-E-Imran - Parah 3</span><span class="arabic">٣. آل عمران - الجزء الثالث</span></li>
+            <li tabindex="0"><span class="english">4. An-Nisa - Parah 4</span><span class="arabic">٤. النساء - الجزء الرابع</span></li>
+            <li tabindex="0"><span class="english">5. Al-Ma'idah - Parah 5</span><span class="arabic">٥. المائدة - الجزء الخامس</span></li>
+            <li tabindex="0"><span class="english">6. Al-An'am - Parah 6</span><span class="arabic">٦. الأنعام - الجزء السادس</span></li>
+            <li tabindex="0"><span class="english">7. Al-A'raf - Parah 7</span><span class="arabic">٧. الأعراف - الجزء السابع</span></li>
+            <li tabindex="0"><span class="english">8. Al-Anfal - Parah 8</span><span class="arabic">٨. الأنفال - الجزء الثامن</span></li>
+            <li tabindex="0"><span class="english">9. At-Tawbah - Parah 9</span><span class="arabic">٩. التوبة - الجزء التاسع</span></li>
+            <li tabindex="0"><span class="english">10. Yunus - Parah 10</span><span class="arabic">١٠. يونس - الجزء العاشر</span></li>
+            <li tabindex="0"><span class="english">11. Hud - Parah 11</span><span class="arabic">١١. هود - الجزء الحادي عشر</span></li>
+            <li tabindex="0"><span class="english">12. Yusuf - Parah 12</span><span class="arabic">١٢. يوسف - الجزء الثاني عشر</span></li>
+            <li tabindex="0"><span class="english">13. Ibrahim - Parah 13</span><span class="arabic">١٣. إبراهيم - الجزء الثالث عشر</span></li>
+            <li tabindex="0"><span class="english">14. Al-Hijr - Parah 14</span><span class="arabic">١٤. الحجر - الجزء الرابع عشر</span></li>
+            <li tabindex="0"><span class="english">15. Al-Isra - Parah 15</span><span class="arabic">١٥. الإسراء - الجزء الخامس عشر</span></li>
+            <li tabindex="0"><span class="english">16. Al-Kahf - Parah 16</span><span class="arabic">١٦. الكهف - الجزء السادس عشر</span></li>
+            <li tabindex="0"><span class="english">17. Maryam - Parah 17</span><span class="arabic">١٧. مريم - الجزء السابع عشر</span></li>
+            <li tabindex="0"><span class="english">18. Ta-Ha - Parah 18</span><span class="arabic">١٨. طه - الجزء الثامن عشر</span></li>
+            <li tabindex="0"><span class="english">19. Al-Anbiya - Parah 19</span><span class="arabic">١٩. الأنبياء - الجزء العشرون</span></li>
+            <li tabindex="0"><span class="english">20. Al-Hajj - Parah 20</span><span class="arabic">٢٠. الحج - الجزء الواحد والعشرون</span></li>
+            <li tabindex="0"><span class="english">21. Al-Mu'minun - Parah 21</span><span class="arabic">٢١. المؤمنون - الجزء الثاني والعشرون</span></li>
+            <li tabindex="0"><span class="english">22. Ash-Shu'ara - Parah 22</span><span class="arabic">٢٢. الشعراء - الجزء الثالث والعشرون</span></li>
+            <li tabindex="0"><span class="english">23. An-Naml - Parah 23</span><span class="arabic">٢٣. النمل - الجزء الرابع والعشرون</span></li>
+            <li tabindex="0"><span class="english">24. Al-Furqan - Parah 24</span><span class="arabic">٢٤. الفرقان - الجزء الخامس والعشرون</span></li>
+            <li tabindex="0"><span class="english">25. Ash-Shu'ara - Parah 25</span><span class="arabic">٢٥. الشعراء - الجزء السادس والعشرون</span></li>
+            <li tabindex="0"><span class="english">26. An-Naml - Parah 26</span><span class="arabic">٢٦. النمل - الجزء السابع والعشرون</span></li>
+            <li tabindex="0"><span class="english">27. Al-Azhab - Parah 27</span><span class="arabic">٢٧. الأحزاب - الجزء الثامن والعشرون</span></li>
+            <li tabindex="0"><span class="english">28. Al-Jinn - Parah 28</span><span class="arabic">٢٨. الجن - الجزء التاسع والعشرون</span></li>
+            <li tabindex="0"><span class="english">29. Al-Mulk - Parah 29</span><span class="arabic">٢٩. الملك - الجزء الثلاثون</span></li>
+            <li tabindex="0"><span class="english">30. Al-Insan - Parah 30</span><span class="arabic">٣٠. الإنسان - الجزء الثلاثون</span></li>
+        </ul>
+    </div>
+
+    <script>
+        // JavaScript for adding click effect
+        const parahList = document.getElementById('parahList');
+        parahList.addEventListener('click', function(e) {
+            // Ensure the clicked element is a list item
+            if (e.target.tagName === 'LI' || e.target.closest('li')) {
+                // Remove "selected" class from all items
+                const items = document.querySelectorAll('.parah li');
+                items.forEach(item => item.classList.remove('selected'));
+
+                // Add "selected" class to the clicked item
+                const clickedItem = e.target.closest('li');
+                clickedItem.classList.add('selected');
+            }
+        });
+    </script>
+</body>
+  </html>
